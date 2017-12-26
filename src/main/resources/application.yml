@@ -1,0 +1,6 @@
+server:
+  port: 8081 # 服务端口
+
+hr:
+  order:
+    url: http:127.0.0.1:8082/order/ # 订单url
