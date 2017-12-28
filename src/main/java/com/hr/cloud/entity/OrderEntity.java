@@ -36,4 +36,13 @@ public class OrderEntity {
   public void setCreateAt(Date createAt) {
     this.createAt = createAt;
   }
+  
+  @Override
+  public String toString() {
+    return "OrderEntity{" +
+        "id=" + id +
+        ", code='" + code + '\'' +
+        ", createAt=" + createAt +
+        '}';
+  }
 }

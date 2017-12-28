@@ -1,10 +1,13 @@
 package com.hr.cloud.controller;
 
-import com.hr.cloud.mapper.OrderMapper;
+import com.hr.cloud.entity.OrderEntity;
+import com.hr.cloud.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by hurui on 2017/12/28.
@@ -14,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
   
   @Autowired
-  private OrderMapper orderMapper;
+  private OrderService orderService;
   
   @GetMapping("findAll")
-  public Object findAllOrder() {
-    return orderMapper.findAll();
+  public List<OrderEntity> findAllOrder() {
+    return orderService.findAll();
   }
   
 }
