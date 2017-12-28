@@ -1,6 +1,22 @@
 server:
-  port: 8081 # 服务端口
+  port: 8081 #服务端口
 
 hr:
   order:
-    url: http:127.0.0.1:8082/order/ # 订单url
+    url: http:127.0.0.1:8082/order/ #订单url
+
+mybatis:
+  type-aliases-package: com.hr.cloud.entity #entity所在包
+
+spring:
+  datasource: #datasource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/localhost_newtank?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root303
+
+pagehelper: #pagehelper分页插件
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
