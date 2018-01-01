@@ -45,4 +45,10 @@ public class OrderMapperTest {
     List<OrderEntity> orderEntityList = orderMapper.findOrderByIds(Arrays.asList(1L, 2L));
     System.err.println(orderEntityList);
   }
+  
+  @Test
+  public void findOneOrder() throws Exception {
+    OrderEntity OrderEntity = orderMapper.findOneOrder(1L);
+    System.err.println(OrderEntity);
+  }
 }

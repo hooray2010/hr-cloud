@@ -56,6 +56,10 @@
             <artifactId>druid</artifactId>
             <version>1.0.11</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.mybatis.spring.boot</groupId>-->
+            <!--<artifactId>mybatis-spring-boot-autoconfigure</artifactId>-->
+        <!--</dependency>-->
 
     </dependencies>
 

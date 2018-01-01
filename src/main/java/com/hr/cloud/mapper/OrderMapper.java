@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Created by hurui on 2017/12/28.
  */
+@Mapper
 public interface OrderMapper {
   
   /**
@@ -63,4 +64,6 @@ public interface OrderMapper {
       @Result(property = "createAt", column = "create_at", javaType = Date.class)
   })
   List<OrderEntity> findOrderByIds(@Param("orderIds") List<Long> orderIds);
+  
+  OrderEntity findOneOrder(long orderId);
 }

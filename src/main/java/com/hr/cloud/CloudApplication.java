@@ -11,12 +11,13 @@ import org.springframework.web.client.RestTemplate;
  * Created by hurui on 2017/12/25.
  */
 @SpringBootApplication
-@MapperScan("com.hr.cloud.mapper")
+//@MapperScan("com.hr.cloud.mapper")
 public class CloudApplication {
   
   @Bean
   public RestTemplate restTemplate() {
     //return new RestTemplate();
+    //更改restTemplate实现
     return new RestTemplate(new OkHttp3ClientHttpRequestFactory());
   }
   
