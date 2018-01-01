@@ -1,11 +1,8 @@
 package com.hr.cloud.mapper;
 
 import com.hr.cloud.entity.OrderEntity;
-import com.hr.cloud.service.OrderService;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
+import com.hr.cloud.provider.OrderSqlProvider;
+import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +12,11 @@ import java.util.List;
  */
 public interface OrderMapper {
   
+  /**
+   * 查询所有订单
+   *
+   * @return
+   */
   @Select("select * from qmxbb_order")
   @Results({
       @Result(property = "id", column = "id", javaType = Long.class),
@@ -23,11 +25,40 @@ public interface OrderMapper {
   })
   List<OrderEntity> findAll();
   
-  @SelectProvider(type = OrderService.class, method = "selectOrderByIdIn")
+  /**
+   * 查询一个订单, 根据id
+   *
+   * @param orderId
+   * @return
+   */
+  @Select("select * from qmxbb_order where id = #{orderId}")
   @Results({
       @Result(property = "id", column = "id", javaType = Long.class),
       @Result(property = "code", column = "order_code", javaType = String.class),
       @Result(property = "createAt", column = "create_at", javaType = Date.class)
   })
-  List<OrderEntity> findOrderByIdIn(List<Long> orderIds);
+  OrderEntity findOrderById(@Param("orderId") long orderId);
+  
+  /**
+   * 查询订单, 动态sql
+   *
+   * @param orderIds
+   * @return
+   */
+  @SelectProvider(type = OrderSqlProvider.class, method = "selectOrderByIdIn")
+  //@Select("select * from qmxbb_order where id in #{orderIds}")
+  @Results({
+      @Result(property = "id", column = "id", javaType = Long.class),
+      @Result(property = "code", column = "order_code", javaType = String.class),
+      @Result(property = "createAt", column = "create_at", javaType = Date.class)
+  })
+  List<OrderEntity> findOrderByIdIn(@Param("orderIds") String orderIds);
+  
+  @Select("select * from qmxbb_order where id in ${orderIds}")
+  @Results({
+      @Result(property = "id", column = "id", javaType = Long.class),
+      @Result(property = "code", column = "order_code", javaType = String.class),
+      @Result(property = "createAt", column = "create_at", javaType = Date.class)
+  })
+  List<OrderEntity> findOrderByIds(@Param("orderIds") String orderIds);
 }

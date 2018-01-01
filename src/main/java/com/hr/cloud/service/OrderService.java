@@ -2,6 +2,8 @@ package com.hr.cloud.service;
 
 import com.hr.cloud.entity.OrderEntity;
 import com.hr.cloud.mapper.OrderMapper;
+import com.hr.cloud.util.StringService;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,21 +19,6 @@ public class OrderService {
   @Autowired
   private OrderMapper orderMapper;
   
-  /**
-   * 拼接sql ids, (1,2,3)
-   */
-  public String getSqlIdIn(List<Long> idList) {
-    String cIds = " (";
-    for (int i = 0; i < idList.size(); i++) {
-      if (i == 0) {
-        cIds = cIds + idList.get(i);
-      } else {
-        cIds = cIds + ',' + idList.get(i);
-      }
-    }
-    return cIds + ") ";
-  }
-  
   public List<OrderEntity> findAll() {
     return orderMapper.findAll();
   }
@@ -43,18 +30,7 @@ public class OrderService {
    * @return
    */
   public List<OrderEntity> findOrderByIdIn(List<Long> orderIds) {
-    return orderMapper.findOrderByIdIn(orderIds);
+    return orderMapper.findOrderByIdIn(StringService.getSqlIdIn(orderIds));
   }
   
-  public String selectOrderByIdIn(List<Long> orderIds) {
-    return new SQL() {
-      {
-        SELECT("order_code");
-        FROM("qmxbb_order");
-        if (orderIds != null && ! orderIds.isEmpty()) {
-          WHERE("id in" + getSqlIdIn(orderIds));
-        }
-      }
-    }.toString();
-  }
 }
