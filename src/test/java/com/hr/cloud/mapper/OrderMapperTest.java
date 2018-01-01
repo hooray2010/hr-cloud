@@ -42,7 +42,7 @@ public class OrderMapperTest {
   
   @Test
   public void findOrderByIds() throws Exception {
-    List<OrderEntity> orderEntityList = orderMapper.findOrderByIds(StringService.getSqlIdIn(Arrays.asList(1L, 2L)));
+    List<OrderEntity> orderEntityList = orderMapper.findOrderByIds(Arrays.asList(1L, 2L));
     System.err.println(orderEntityList);
   }
 }

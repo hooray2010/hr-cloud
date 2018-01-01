@@ -2,6 +2,7 @@ package com.hr.cloud.mapper;
 
 import com.hr.cloud.entity.OrderEntity;
 import com.hr.cloud.provider.OrderSqlProvider;
+import com.hr.cloud.util.SelectInLanguageDriver;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
@@ -54,11 +55,12 @@ public interface OrderMapper {
   })
   List<OrderEntity> findOrderByIdIn(@Param("orderIds") String orderIds);
   
-  @Select("select * from qmxbb_order where id in ${orderIds}")
+  @Lang(SelectInLanguageDriver.class)
+  @Select("select * from qmxbb_order where id in (#{orderIds})")
   @Results({
       @Result(property = "id", column = "id", javaType = Long.class),
       @Result(property = "code", column = "order_code", javaType = String.class),
       @Result(property = "createAt", column = "create_at", javaType = Date.class)
   })
-  List<OrderEntity> findOrderByIds(@Param("orderIds") String orderIds);
+  List<OrderEntity> findOrderByIds(@Param("orderIds") List<Long> orderIds);
 }

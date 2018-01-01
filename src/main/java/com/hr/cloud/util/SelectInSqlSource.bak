@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Created by hurui on 2017/12/29.
  */
-public class InSqlSource implements SqlSource {
+public class SelectInSqlSource implements SqlSource {
   
   private String sql;
   private List<ParameterMapping> parameterMappings;
@@ -19,11 +19,11 @@ public class InSqlSource implements SqlSource {
   private SqlSegEntry[] sqlCache;
   private List<ParameterMapping> parameterMappingsForIn;
   
-  public InSqlSource(Configuration configuration, String sql) {
+  public SelectInSqlSource(Configuration configuration, String sql) {
     this(configuration, sql, null);
   }
   
-  public InSqlSource(Configuration configuration, String sql, List<ParameterMapping> parameterMappings) {
+  public SelectInSqlSource(Configuration configuration, String sql, List<ParameterMapping> parameterMappings) {
     this.sql = sql;
     this.parameterMappings = parameterMappings;
     this.configuration = configuration;
