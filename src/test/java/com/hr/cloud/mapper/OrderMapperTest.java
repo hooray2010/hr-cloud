@@ -3,14 +3,17 @@ package com.hr.cloud.mapper;
 import com.hr.cloud.CloudApplication;
 import com.hr.cloud.entity.OrderEntity;
 import com.hr.cloud.util.StringService;
+import org.apache.ibatis.session.Configuration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -23,6 +26,9 @@ public class OrderMapperTest {
   
   @Autowired
   private OrderMapper orderMapper;
+  
+  @Autowired
+  private SqlSessionTemplate sqlSessionTemplate;
   
   @Test
   public void findAll() throws Exception {
@@ -48,7 +54,15 @@ public class OrderMapperTest {
   
   @Test
   public void findOneOrder() throws Exception {
-    OrderEntity OrderEntity = orderMapper.findOneOrder(1L);
-    System.err.println(OrderEntity);
+    //可以查看mybatis配置信息
+    Configuration configuration = sqlSessionTemplate.getConfiguration();
+    System.err.println("根据id查找一个映射: " + configuration.getMappedStatement("findOne"));
+    Collection<String> mappedStatementNames = configuration.getMappedStatementNames();
+    for (String name : mappedStatementNames) {
+      System.err.println("所有映射: " + name);
+    }
+    
+    OrderEntity OrderEntity = orderMapper.findOne(1L);
+    System.err.println("查询结果: " + OrderEntity);
   }
 }

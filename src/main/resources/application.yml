@@ -4,9 +4,9 @@ hr.order.url: http:127.0.0.1:8082/order/ #订单url
 
 #mybatis
 mybatis:
-  mybatis.config-location: classpath:mybatis-config.xml
   type-aliases-package: com.hr.cloud.entity #entity所在包
-  #mapper-locations: classpath:com.hr.cloud.mapper.xml/*Mapper.xml #sql位置
+  mapper-locations: classpath:mapper/*.xml #sql位置
+  configuration.map-underscore-to-camel-case: true #开启驼峰
 
 spring:
   datasource: #datasource
@@ -20,8 +20,3 @@ pagehelper: #pagehelper分页插件
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
-
-
-logging.level:
-  root: WARN
-  sample.mybatis.mapper: TRACE

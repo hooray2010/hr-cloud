@@ -1,7 +1,7 @@
 package com.hr.cloud.mapper;
 
 import com.hr.cloud.entity.OrderEntity;
-import com.hr.cloud.provider.OrderSqlProvider;
+import com.hr.cloud.mapper.provider.OrderSqlProvider;
 import com.hr.cloud.util.SelectInLanguageDriver;
 import org.apache.ibatis.annotations.*;
 
@@ -65,5 +65,5 @@ public interface OrderMapper {
   })
   List<OrderEntity> findOrderByIds(@Param("orderIds") List<Long> orderIds);
   
-  OrderEntity findOneOrder(long orderId);
+  OrderEntity findOne(long orderId);
 }
