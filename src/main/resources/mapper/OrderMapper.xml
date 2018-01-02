@@ -3,7 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hr.cloud.mapper.OrderMapper">
-    <select id="findOne" resultType="com.hr.cloud.entity.OrderEntity">
-        select id, order_code, create_at from qmxbb_order where id = #{orderId}
+    <!--<select id="findOne" resultType="orderentity">-->
+    <select id="findOne" resultType="Order">
+    select id, order_code as code, create_at from qmxbb_order where id = #{orderId}
     </select>
 </mapper>

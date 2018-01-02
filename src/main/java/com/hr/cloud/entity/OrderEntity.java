@@ -1,10 +1,13 @@
 package com.hr.cloud.entity;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Date;
 
 /**
  * Created by hurui on 2017/12/28.
  */
+@Alias("Order")
 public class OrderEntity {
   
   private long id;

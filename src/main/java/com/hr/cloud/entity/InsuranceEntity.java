@@ -1,10 +1,12 @@
 package com.hr.cloud.entity;
 
 import com.hr.cloud.model.Status;
+import org.apache.ibatis.type.Alias;
 
 /**
  * Created by hurui on 2018/1/2.
  */
+@Alias("Insurance")
 public class InsuranceEntity {
   
   private long id;

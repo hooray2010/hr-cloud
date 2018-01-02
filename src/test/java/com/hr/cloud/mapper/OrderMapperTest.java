@@ -56,7 +56,19 @@ public class OrderMapperTest {
   public void findOneOrder() throws Exception {
     //可以查看mybatis配置信息
     Configuration configuration = sqlSessionTemplate.getConfiguration();
-    System.err.println("根据id查找一个映射: " + configuration.getMappedStatement("findOne"));
+    
+    System.err.println("根据id查找一个映射: findOne " + configuration.getMappedStatement("findOne").getId());
+    //重复的sql id, 必须用 类名 + 方法名
+    //System.err.println("根据id查找一个映射: findAll " + configuration.getMappedStatement("findAll").getId());
+    
+    //别名全部转为小写!!!
+    Class<?> type = configuration.getTypeAliasRegistry().getTypeAliases().get("order");
+    System.err.println("type OrderEntity = " + type.getCanonicalName());
+    System.err.println("type OrderEntity = " + type.getSimpleName());
+    System.err.println("type OrderEntity = " + type.getName());
+    System.err.println("type OrderEntity = " + type.getTypeName());
+    
+    //所有映射sql
     Collection<String> mappedStatementNames = configuration.getMappedStatementNames();
     for (String name : mappedStatementNames) {
       System.err.println("所有映射: " + name);
