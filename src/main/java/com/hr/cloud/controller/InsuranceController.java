@@ -4,6 +4,7 @@ import com.hr.cloud.entity.InsuranceEntity;
 import com.hr.cloud.mapper.InsuranceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,4 +30,8 @@ public class InsuranceController {
     return insuranceMapper.findAll();
   }
   
+  @GetMapping("findOne/insuranceId/{insuranceId}")
+  public InsuranceEntity findOne(@PathVariable long insuranceId) {
+    return insuranceMapper.findOne(insuranceId);
+  }
 }

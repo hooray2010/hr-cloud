@@ -14,12 +14,12 @@ import org.springframework.web.client.RestTemplate;
 //@MapperScan("com.hr.cloud.mapper")
 public class CloudApplication {
   
-  @Bean
-  public RestTemplate restTemplate() {
-    //return new RestTemplate();
-    //更改restTemplate实现
-    return new RestTemplate(new OkHttp3ClientHttpRequestFactory());
-  }
+//  @Bean
+//  public RestTemplate restTemplate() {
+//    //return new RestTemplate();
+//    //更改restTemplate实现
+//    return new RestTemplate(new OkHttp3ClientHttpRequestFactory());
+//  }
   
   public static void main(String[] args) {
     SpringApplication.run(CloudApplication.class);
