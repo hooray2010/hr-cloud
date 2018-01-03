@@ -70,7 +70,7 @@ public class InsuranceMapperTest {
     System.err.println(restTemplate1);
     Object restTemplate2 = beanFactory.getBean("restTemplate");
     System.err.println(restTemplate2);
-  
+    
     System.err.println(restTemplate);
     List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
     System.err.println(messageConverters);

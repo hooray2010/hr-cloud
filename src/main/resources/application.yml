@@ -11,9 +11,12 @@ mybatis:
 spring:
   datasource: #datasource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://39.106.176.242:3306/cloud?useUnicode=true&characterEncoding=utf-8
-    username: alex
-    password: Root303!
+#    url: jdbc:mysql://39.106.176.242:3306/cloud?useUnicode=true&characterEncoding=utf-8
+#    username: alex
+#    password: Root303!
+    url: jdbc:mysql://localhost/localhost_newtank?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root303
 
 pagehelper: #pagehelper分页插件
     helperDialect: mysql
