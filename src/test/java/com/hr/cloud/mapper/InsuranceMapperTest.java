@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
@@ -57,6 +58,17 @@ public class InsuranceMapperTest {
     System.err.println(beanDefinitionNames[0].toString());
     
     Map<String, Object> beansWithAnnotation = applicationContext.getBeansWithAnnotation(Service.class);
+    System.err.println(beansWithAnnotation);
+    
+    DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) autowireCapableBeanFactory;
+    Object restTemplate = beanFactory.getBean("restTemplate");
+    System.err.println(restTemplate);
+    Object restTemplate2 = beanFactory.getBean("restTemplate");
+    System.err.println(restTemplate2);
+    
+    Object insureMapper = beanFactory.getBean("insuranceMapper");
+    System.err.println(insureMapper);
+    System.err.println(insuranceMapper);
     
     InsuranceEntity insuranceEntity = insuranceMapper.findOne(1L);
     System.err.println(insuranceEntity);
