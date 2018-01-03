@@ -57,8 +57,8 @@ public class OrderMapperTest {
     //可以查看mybatis配置信息
     Configuration configuration = sqlSessionTemplate.getConfiguration();
     
-    System.err.println("根据id查找一个映射: findOne " + configuration.getMappedStatement("findOne").getId());
     //重复的sql id, 必须用 类名 + 方法名
+    //System.err.println("根据id查找一个映射: findOne " + configuration.getMappedStatement("findOne").getId());
     //System.err.println("根据id查找一个映射: findAll " + configuration.getMappedStatement("findAll").getId());
     
     //别名全部转为小写!!!

@@ -10,8 +10,10 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,9 @@ public class InsuranceMapperTest {
   
   @Autowired
   private ApplicationContext applicationContext;
+  
+  @Autowired
+  private RestTemplate restTemplate;
   
   @Test
   public void findAll() throws Exception {
@@ -55,16 +60,20 @@ public class InsuranceMapperTest {
     System.err.println(applicationContext.getBeanDefinitionCount());
     
     String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
-    System.err.println(beanDefinitionNames[0].toString());
+    System.err.println(beanDefinitionNames[0]);
     
     Map<String, Object> beansWithAnnotation = applicationContext.getBeansWithAnnotation(Service.class);
     System.err.println(beansWithAnnotation);
     
     DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) autowireCapableBeanFactory;
-    Object restTemplate = beanFactory.getBean("restTemplate");
-    System.err.println(restTemplate);
+    Object restTemplate1 = beanFactory.getBean("restTemplate");
+    System.err.println(restTemplate1);
     Object restTemplate2 = beanFactory.getBean("restTemplate");
     System.err.println(restTemplate2);
+  
+    System.err.println(restTemplate);
+    List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
+    System.err.println(messageConverters);
     
     Object insureMapper = beanFactory.getBean("insuranceMapper");
     System.err.println(insureMapper);
