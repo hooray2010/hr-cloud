@@ -3,6 +3,8 @@ package com.hr.cloud.controller;
 import com.hr.cloud.entity.OrderEntity;
 import com.hr.cloud.mapper.OrderMapper;
 import com.hr.cloud.service.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,8 @@ import java.util.List;
 @RequestMapping("order")
 public class OrderController {
   
+  private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
+  
   @Autowired
   private OrderService orderService;
   
@@ -31,6 +35,11 @@ public class OrderController {
   
   @GetMapping("findOne/orderId/{orderId}")
   public OrderEntity findAllOrder(@PathVariable long orderId) {
+    
+    System.out.println(LOGGER.isDebugEnabled());
+    LOGGER.info("test log...");
+    Logger logger = LOGGER;
+    
     return orderMapper.findOne(orderId);
   }
   
