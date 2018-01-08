@@ -3,8 +3,8 @@ package com.hr.cloud.controller;
 import com.hr.cloud.entity.OrderEntity;
 import com.hr.cloud.mapper.OrderMapper;
 import com.hr.cloud.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +18,10 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("order")
+@Slf4j
 public class OrderController {
   
-  private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
+  //private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
   
   @Autowired
   private OrderService orderService;
@@ -36,11 +37,13 @@ public class OrderController {
   @GetMapping("findOne/orderId/{orderId}")
   public OrderEntity findAllOrder(@PathVariable long orderId) {
     
-    System.out.println(LOGGER.isDebugEnabled());
-    LOGGER.info("test log...");
-    Logger logger = LOGGER;
+    System.out.println(log.isDebugEnabled());
+    log.info("test log...");
+    Logger logger = log;
     
-    return orderMapper.findOne(orderId);
+    OrderEntity orderEntity = orderMapper.findOne(orderId);
+    System.err.println(orderEntity);
+    return orderEntity;
   }
   
 }

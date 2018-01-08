@@ -1,10 +1,13 @@
 package com.hr.cloud.util;
 
+import lombok.experimental.UtilityClass;
+
 import java.util.List;
 
 /**
  * Created by hurui on 2018/1/1.
  */
+@UtilityClass
 public class StringService {
   
   /**
