@@ -2,7 +2,7 @@
 <configuration>
 
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="/Users/hurui/test/logs"/>
+    <property name="LOG_HOME" value="/Users/hurui/tmp/logs"/>
 
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -32,23 +32,23 @@
     </appender>
 
     <!--邮件报警-->
-    <!--<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">-->
-        <!--<smtpHost>smtp.exmail.qq.com</smtpHost>-->
-        <!--<username>hurui@data88.cn</username>-->
-        <!--<password>hrdata88A</password>-->
-        <!--<to>hooray2010@foxmail.com</to>-->
-        <!--<from>hurui@data88.cn</from>-->
-        <!--<subject>【hr-cloud】localhost 服务器错误报警</subject>-->
-        <!--<asynchronousSending>true</asynchronousSending>-->
-        <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
-            <!--<pattern>[%level] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %c:%L - %msg%n</pattern>-->
-        <!--</layout>-->
-    <!--</appender>-->
+    <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>smtp.exmail.qq.com</smtpHost>
+        <username>hurui@data88.cn</username>
+        <password>hrdata88A</password>
+        <to>hooray2010@foxmail.com</to>
+        <from>hurui@data88.cn</from>
+        <subject>【hr-cloud】localhost 服务器错误报警</subject>
+        <asynchronousSending>true</asynchronousSending>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[%level] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %c:%L - %msg%n</pattern>
+        </layout>
+    </appender>
 
-    <!--日志异步到数据库-->
+    <!--&lt;!&ndash;日志异步到数据库&ndash;&gt;-->
     <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">-->
         <!--&lt;!&ndash;日志异步到数据库 &ndash;&gt;-->
-        <!--<connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">-->
+        <!--<connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">-->
             <!--&lt;!&ndash;连接池 &ndash;&gt;-->
             <!--<dataSource class="com.alibaba.druid.pool.DruidDataSource">-->
                 <!--<driverClass>com.mysql.jdbc.Driver</driverClass>-->
@@ -66,10 +66,10 @@
     <logger name="java.sql.PreparedStatement" level="DEBUG"/>
 
     <!--root节点，必选节点，用来指定最基础的日志输出级别, 可以配置多种输出方式 -->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
-        <!--<appender-ref ref="EMAIL"/>-->
+        <appender-ref ref="EMAIL"/>
         <!--<appender-ref ref="DB"/>-->
     </root>
 
