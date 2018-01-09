@@ -42,7 +42,7 @@ public class OrderController {
     Logger logger = log;
     
     OrderEntity orderEntity = orderMapper.findOne(orderId);
-    log.error(orderEntity.getCode());
+    //log.error(orderEntity.getCode());
     System.err.println(orderEntity);
     return orderEntity;
   }
