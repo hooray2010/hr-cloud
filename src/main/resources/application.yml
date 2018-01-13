@@ -1,7 +1,6 @@
-#服务端口
 server.port: 8081
 
-#订单url
+#order url
 hr.order.url: http:127.0.0.1:8082/order/
 
 #logging
@@ -9,9 +8,9 @@ logging.config: classpath:logback.xml
 
 #mybatis
 mybatis:
-  type-aliases-package: com.hr.cloud.entity #entity所在包
-  mapper-locations: classpath:mapper/*.xml #sql位置
-  configuration.map-underscore-to-camel-case: true #开启驼峰
+  type-aliases-package: com.hr.cloud.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration.map-underscore-to-camel-case: true
 
 spring:
   #datasource
@@ -24,7 +23,6 @@ spring:
     username: root
     password: root303
 
-#pagehelper分页插件
 pagehelper:
     helperDialect: mysql
     reasonable: true

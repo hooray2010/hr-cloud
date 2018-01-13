@@ -83,7 +83,7 @@
     <logger name="java.sql.PreparedStatement" level="DEBUG"/>
 
     <!--root节点，必选节点，用来指定最基础的日志输出级别, 可以配置多种输出方式 -->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="INFO-FILE"/>
         <appender-ref ref="ERROR-FILE"/>

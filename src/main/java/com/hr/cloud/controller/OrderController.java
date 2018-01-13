@@ -38,12 +38,16 @@ public class OrderController {
   public OrderEntity findAllOrder(@PathVariable long orderId) {
     
     System.out.println(log.isDebugEnabled());
+    log.debug("test debug...");
     log.info("test log...");
+    log.error("test error");
     Logger logger = log;
     
     OrderEntity orderEntity = orderMapper.findOne(orderId);
     //log.error(orderEntity.getCode());
     System.err.println(orderEntity);
+    int i = 0;
+    orderEntity.setCode("232");
     return orderEntity;
   }
   
