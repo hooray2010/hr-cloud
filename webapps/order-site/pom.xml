@@ -11,7 +11,7 @@
 
     <artifactId>order-site</artifactId>
 
-    <name>order-site</name>
+    <name>order-site:8081</name>
     <description>order part of hr-cloud</description>
 
     <dependencies>

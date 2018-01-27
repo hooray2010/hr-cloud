@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import service.DateService;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -18,11 +17,8 @@ import java.util.List;
 @Component
 public class QuartzService {
   
-  private static final String TRIGGER_NAME_PREFIX = "order_trigger";
-  
-  private static final String GROUP_NAME = "order_group";
-  
   private static final String JOB_NAME_PREFIX = "order_job";
+  private static final String GROUP_NAME = "order_job_group:";
   
   @Autowired
   private Scheduler scheduler;
@@ -30,22 +26,28 @@ public class QuartzService {
   @Autowired
   private OrderMapper orderMapper;
   
-  @PostConstruct
+  //@PostConstruct
   public void init() throws SchedulerException {
     
     List<OrderEntity> orderEntityList = orderMapper.findAll();
     
     for (OrderEntity orderEntity : orderEntityList) {
+      
+      String identity = JOB_NAME_PREFIX + orderEntity.getId();
+      
       //jobData
-      JobDetail jobDetail = JobBuilder.newJob(OrderJob.class).withIdentity(JOB_NAME_PREFIX + orderEntity.getId(), GROUP_NAME).build();
+      JobDetail jobDetail = JobBuilder.newJob(OrderJob.class)
+          .withIdentity(identity, GROUP_NAME)
+          .build();
       JobDataMap jobDataMap = jobDetail.getJobDataMap();
       jobDataMap.put("prop", orderEntity.getCode());
       log.info("定时任务初始化，入参 = " + orderEntity);
       
       //trigger
-      CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(DateService.getCron(DateService.TodayEnd()));
+      String cron = DateService.getCron(DateService.TodayEnd());
+      CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(cron);
       CronTrigger cronTrigger = TriggerBuilder.newTrigger()
-          .withIdentity(TRIGGER_NAME_PREFIX + orderEntity.getId(), GROUP_NAME)
+          .withIdentity(identity, GROUP_NAME)
           .withSchedule(scheduleBuilder)
           .build();
       

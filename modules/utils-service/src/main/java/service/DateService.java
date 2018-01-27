@@ -1,5 +1,7 @@
 package service;
 
+import lombok.experimental.UtilityClass;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -7,6 +9,7 @@ import java.util.Date;
 /**
  * Created by liujianqiang on 2017/3/3.
  */
+@UtilityClass
 public class DateService {
   
   public static final String FORMAT_DATE_STYLE_1 = "yyyy/MM/dd";

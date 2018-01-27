@@ -11,7 +11,7 @@
 
     <artifactId>insurance-site</artifactId>
 
-    <name>insurance-site</name>
+    <name>insurance-site:8082</name>
     <description>insurance part of hr cloud</description>
 
 </project>

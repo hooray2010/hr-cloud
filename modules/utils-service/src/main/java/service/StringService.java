@@ -1,5 +1,7 @@
 package service;
 
+import lombok.experimental.UtilityClass;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -9,6 +11,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@UtilityClass
 public class StringService {
   
   /**

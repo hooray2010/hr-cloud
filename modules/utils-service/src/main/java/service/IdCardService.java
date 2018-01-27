@@ -1,5 +1,7 @@
 package service;
 
+import lombok.experimental.UtilityClass;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -8,6 +10,7 @@ import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@UtilityClass
 public class IdCardService {
   /*********************************** 身份证验证开始 ****************************************/
   /**

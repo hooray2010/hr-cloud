@@ -87,7 +87,7 @@
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="INFO-FILE"/>
         <appender-ref ref="ERROR-FILE"/>
-        <appender-ref ref="EMAIL"/>
+        <!--<appender-ref ref="EMAIL"/>-->
         <!--<appender-ref ref="DB"/>-->
     </root>
 
