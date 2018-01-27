@@ -11,5 +11,7 @@
 
     <artifactId>utils-service</artifactId>
 
+    <name>utils-service</name>
+    <description>static utils service</description>
 
 </project>
