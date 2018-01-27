@@ -14,4 +14,17 @@
     <name>order-site</name>
     <description>order part of hr-cloud</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.hr.cloud</groupId>
+            <artifactId>order-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hr.cloud</groupId>
+            <artifactId>utils-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>
