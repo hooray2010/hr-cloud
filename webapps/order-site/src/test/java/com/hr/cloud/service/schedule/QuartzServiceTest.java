@@ -1,6 +1,6 @@
 package com.hr.cloud.service.schedule;
 
-import com.hr.cloud.CloudApplication;
+import com.hr.cloud.OrderSiteApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.Scheduler;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@Import(CloudApplication.class)
+@Import(OrderSiteApplication.class)
 public class QuartzServiceTest {
   
   @Autowired

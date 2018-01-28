@@ -1,7 +1,7 @@
 package com.hr.cloud.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hr.cloud.CloudApplication;
+import com.hr.cloud.OrderSiteApplication;
 import com.hr.cloud.entity.OrderEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@Import(CloudApplication.class)
+@Import(OrderSiteApplication.class)
 public class OrderServiceTest {
   
   private static final ObjectMapper MAPPER = new ObjectMapper();

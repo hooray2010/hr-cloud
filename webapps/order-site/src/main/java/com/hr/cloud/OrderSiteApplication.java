@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 //@EnableAutoConfiguration(exclude = DataSourceAutoConfiguration.class)
 //@MapperScan("com.hr.cloud.mapper")
-public class CloudApplication {
+public class OrderSiteApplication {
   
   public static void main(String[] args) {
-    SpringApplication.run(CloudApplication.class);
+    SpringApplication.run(OrderSiteApplication.class);
   }
   
 }
