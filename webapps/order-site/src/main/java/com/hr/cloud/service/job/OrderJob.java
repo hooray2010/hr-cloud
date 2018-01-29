@@ -1,4 +1,4 @@
-package com.hr.cloud.service.schedule;
+package com.hr.cloud.service.job;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;

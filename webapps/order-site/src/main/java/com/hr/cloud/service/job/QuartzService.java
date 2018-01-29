@@ -1,4 +1,4 @@
-package com.hr.cloud.service.schedule;
+package com.hr.cloud.service.job;
 
 import com.hr.cloud.entity.OrderEntity;
 import com.hr.cloud.mapper.OrderMapper;
