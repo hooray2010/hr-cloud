@@ -1,6 +1,6 @@
-package excel.model;
+package service.excel.model;
 
-import excel.annotation.ExcelCell;
+import service.excel.annotation.ExcelCell;
 
 import java.lang.reflect.Field;
 
