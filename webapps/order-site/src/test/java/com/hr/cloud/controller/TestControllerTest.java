@@ -52,4 +52,12 @@ public class TestControllerTest {
     //预期大于 3，结果是 3
     log.info(ary.length + "");
   }
+  
+  @Test
+  public void testVector() {
+    List<String> list = Arrays.asList("test1", "test2");
+    list = Collections.synchronizedList(list);
+    log.warn(list.toString());
+  }
+  
 }

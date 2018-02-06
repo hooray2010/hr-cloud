@@ -1,16 +1,71 @@
 package service;
 
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by liujianqiang on 2017/3/3.
  */
 @UtilityClass
+@Slf4j
 public class DateService {
+  
+  /**
+   * 存放不同的日期模板格式的sdf的Map
+   */
+  private static ThreadLocal<Map<String, SimpleDateFormat>> sdfMap = ThreadLocal.withInitial(() -> {
+    log.info(Thread.currentThread().getName() + " init pattern: " + Thread.currentThread());
+    return new HashMap<>();
+  });
+  
+  /**
+   * 返回一个SimpleDateFormat,每个线程只会new一次pattern对应的sdf
+   *
+   * @param pattern
+   * @return
+   */
+  private static SimpleDateFormat getSdf(final String pattern) {
+    Map<String, SimpleDateFormat> tl = sdfMap.get();
+    SimpleDateFormat sdf = tl.get(pattern);
+    if (sdf == null) {
+      log.info(Thread.currentThread().getName() + " put new sdf of pattern " + pattern + " to map");
+      sdf = new SimpleDateFormat(pattern);
+      tl.put(pattern, sdf);
+    }
+    return sdf;
+  }
+  
+  /**
+   * date > string
+   *
+   * @param date
+   * @param pattern
+   * @return
+   */
+  public static String format(Date date, String pattern) {
+    return getSdf(pattern).format(date);
+  }
+  
+  /**
+   * string > date
+   *
+   * @param dateStr
+   * @param pattern
+   * @return
+   * @throws ParseException
+   */
+  public static Date parse(String dateStr, String pattern) throws ParseException {
+    return getSdf(pattern).parse(dateStr);
+  }
+  
+  /************************************************************/
   
   public static final String FORMAT_DATE_STYLE_1 = "yyyy/MM/dd";
   public static final String FORMAT_DATE_STYLE_2 = "yyyy-MM-dd";
