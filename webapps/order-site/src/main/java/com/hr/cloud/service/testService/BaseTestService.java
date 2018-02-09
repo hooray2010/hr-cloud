@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
  * Created by hurui on 2018/2/7.
  */
 @Service
-public class BaseService extends AbstractService {
+public class BaseTestService extends AbstractService {
   
   @Override
   public String get() {

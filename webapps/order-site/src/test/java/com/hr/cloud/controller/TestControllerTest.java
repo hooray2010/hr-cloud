@@ -4,10 +4,7 @@ import com.hr.cloud.OrderSiteApplication;
 import com.hr.cloud.model.Apple;
 import com.hr.cloud.model.Fruit;
 import com.hr.cloud.model.TestModel;
-import com.hr.cloud.service.testService.AbstractService;
-import com.hr.cloud.service.testService.BaseInterface;
-import com.hr.cloud.service.testService.BaseService;
-import com.hr.cloud.service.testService.TestService;
+import com.hr.cloud.service.testService.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -66,24 +63,28 @@ public class TestControllerTest {
     log.warn(list.toString());
   }
   
-  @Resource(type = BaseService.class, name = "baseService")
+  @Resource(type = BaseTestService.class, name = "baseTestService")
   private BaseInterface baseInterface;
   
   @Autowired
   private AbstractService abstractService;
   
   @Autowired
-  private BaseService baseService;
+  private BaseTestService baseTestService;
   
   @Autowired
-  private TestService testService;
+  private BaseTestService testService;
+  
+  @Autowired
+  private TestInterface testInterface;
   
   @Test
   public void testAutowired() {
     log.warn(baseInterface.get());
     log.warn(abstractService.get());
-    log.warn(baseService.get());
+    log.warn(baseTestService.get());
     log.warn(testService.get());
+    log.warn(testInterface.test());
   }
   
 }
