@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * Created by hurui on 2018/1/27.
  */
-@Slf4j
 @Component
+@Slf4j
 public class QuartzService {
   
   private static final String JOB_NAME_PREFIX = "order_job";
