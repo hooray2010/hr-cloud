@@ -9,14 +9,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService extends BaseTestService implements TestInterface {
   
-  @UserEventAspect.UserEventPoint(value = "测试: test service, 方法: get()")
   @Override
   public String get() {
-    return "test service";
+    return "test service get";
   }
   
   @Override
+  @UserEventAspect.UserEventPoint(value = "测试: test service, 方法: test()")
   public String test() {
-    return "test service";
+    return "test service test";
   }
+  
 }

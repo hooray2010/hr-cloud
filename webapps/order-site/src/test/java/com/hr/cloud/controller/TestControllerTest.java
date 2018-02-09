@@ -73,7 +73,7 @@ public class TestControllerTest {
   private BaseTestService baseTestService;
   
   @Autowired
-  private BaseTestService testService;
+  private TestService testService;
   
   @Autowired
   private TestInterface testInterface;
