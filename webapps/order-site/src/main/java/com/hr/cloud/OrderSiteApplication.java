@@ -2,7 +2,6 @@ package com.hr.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * Created by hurui on 2017/12/25.
@@ -10,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @SpringBootApplication
 //@EnableAutoConfiguration(exclude = DataSourceAutoConfiguration.class)
 //@MapperScan("com.hr.cloud.mapper")
-//@EnableAspectJAutoProxy(proxyTargetClass = true)
+//@EnableAspectJAutoProxy(proxyTargetClass = false)
 public class OrderSiteApplication {
   
   public static void main(String[] args) {

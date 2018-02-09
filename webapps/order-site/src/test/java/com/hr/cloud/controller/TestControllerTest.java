@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -78,6 +79,9 @@ public class TestControllerTest {
   @Autowired
   private TestInterface testInterface;
   
+  @Autowired
+  private ApplicationContext applicationContext;
+  
   @Test
   public void testAutowired() {
     log.warn(baseInterface.get());
@@ -85,6 +89,12 @@ public class TestControllerTest {
     log.warn(baseTestService.get());
     log.warn(testService.get());
     log.warn(testInterface.test());
+    
+    TestService bean = applicationContext.getBean(TestService.class);
+    log.warn(bean.toString());
+    
+    Play play = applicationContext.getBean(Play.class);
+    log.warn(play.run());
   }
   
 }

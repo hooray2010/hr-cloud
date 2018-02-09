@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
@@ -27,8 +28,12 @@ public class UserEventAspect {
     String value() default "";
   }
   
-  @AfterReturning("@annotation(com.hr.cloud.config.aop.UserEventAspect.UserEventPoint)")
-  public void userEventNotice(JoinPoint joinPoint) {
+  @Pointcut("@annotation(com.hr.cloud.config.aop.UserEventAspect.UserEventPoint)")
+  public void pointCut() {
+  }
+  
+  @AfterReturning("pointCut()")
+  public void handleUserEvent(JoinPoint joinPoint) {
     Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
     String value = method.getAnnotation(UserEventPoint.class).value();
     log.warn("aop 调用方法: " + joinPoint.getSignature().getDeclaringTypeName() + " - " + method.getName());

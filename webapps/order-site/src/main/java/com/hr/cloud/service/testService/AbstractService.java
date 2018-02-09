@@ -1,5 +1,6 @@
 package com.hr.cloud.service.testService;
 
+import com.hr.cloud.config.aop.UserEventAspect;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class AbstractService implements BaseInterface {
   
   @Override
+  @UserEventAspect.UserEventPoint(value = "测试: AbstractService, 方法: get()")
   public String get() {
     return "abstract service";
   }
