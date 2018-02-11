@@ -15,7 +15,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
-import java.util.Date;
 
 /**
  * Created by huanglei on 2017/1/7.
@@ -230,14 +229,6 @@ public class EncryptService {
       stringBuffer.append((char) charInt);
     }
     return stringBuffer.toString();
-  }
-  
-  public static void main(String[] args) {
-    EncryptService s = new EncryptService();
-    System.out.println("args = [" + s.md5(new Date().getTime() + "") + "]");
-    
-    System.out.println("args = [" + s.md5Encrypt16("123213") + "]");
-    
   }
   
   public byte[] desDecrypt(byte[] src) throws Exception {
