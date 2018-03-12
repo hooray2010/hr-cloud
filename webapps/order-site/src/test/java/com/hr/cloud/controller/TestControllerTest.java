@@ -64,11 +64,19 @@ public class TestControllerTest {
     log.warn(list.toString());
   }
   
+  //******************************************************************************/
+  
+  /**
+   * 接口下有多个实现类，须确定唯一bean
+   */
   @Resource(type = BaseTestService.class, name = "baseTestService")
   private BaseInterface baseInterface;
   
-  @Autowired
-  private AbstractService abstractService;
+  /**
+   * 若有多个实现类，会报错无法确定唯一bean
+   */
+  //@Autowired
+  //private AbstractService abstractService;
   
   @Autowired
   private BaseTestService baseTestService;
@@ -76,6 +84,9 @@ public class TestControllerTest {
   @Autowired
   private TestService testService;
   
+  /**
+   * 注入接口的话，默认是它实现类 testService
+   */
   @Autowired
   private TestInterface testInterface;
   
@@ -85,7 +96,7 @@ public class TestControllerTest {
   @Test
   public void testAutowired() {
     log.warn(baseInterface.get());
-    log.warn(abstractService.get());
+    //log.warn(abstractService.get());
     log.warn(baseTestService.get());
     log.warn(testService.get());
     log.warn(testInterface.test());

@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
  * Created by hurui on 2018/2/7.
  */
 @Service
-public class AbstractService implements BaseInterface {
+public abstract class AbstractService implements BaseInterface {
   
   @Override
-  @UserEventAspect.UserEventPoint(value = "测试: AbstractService, 方法: get()")
+  //@UserEventAspect.UserEventPoint(value = "测试: AbstractService, 方法: get()")
   public String get() {
     return "abstract service";
   }
