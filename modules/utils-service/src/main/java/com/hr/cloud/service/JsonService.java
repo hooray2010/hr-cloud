@@ -1,4 +1,4 @@
-package service;
+package com.hr.cloud.service;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;

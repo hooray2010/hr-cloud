@@ -1,4 +1,4 @@
-package service;
+package com.hr.cloud.service;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;

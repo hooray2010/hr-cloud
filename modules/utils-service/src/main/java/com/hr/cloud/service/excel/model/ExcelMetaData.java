@@ -1,6 +1,6 @@
-package service.excel.model;
+package com.hr.cloud.service.excel.model;
 
-import service.excel.annotation.ExcelCell;
+import com.hr.cloud.service.excel.annotation.ExcelCell;
 
 import java.lang.reflect.Field;
 

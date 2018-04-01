@@ -1,4 +1,4 @@
-package service.excel.exception;
+package com.hr.cloud.service.excel.exception;
 
 
 public class ExcelException extends RuntimeException {

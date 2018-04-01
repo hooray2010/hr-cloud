@@ -1,4 +1,4 @@
-package service;
+package com.hr.cloud.service;
 
 import org.springframework.stereotype.Component;
 
