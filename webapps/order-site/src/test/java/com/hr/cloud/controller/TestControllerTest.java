@@ -12,9 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -106,6 +109,24 @@ public class TestControllerTest {
     
     Play play = applicationContext.getBean(Play.class);
     log.warn(play.run());
+  }
+  
+  @Autowired
+  private RedisTemplate<String, String> stringRedisTemplate;
+  
+  @Autowired
+  private RedisTemplate<String, Long> longRedisTemplate;
+  
+  @Test
+  public void testType() {
+    // TODO: 2018/4/19 StringRedisTemplate可以，自定义的实现如何获取泛型类型？？？
+    //Type genericSuperclass = longRedisTemplate.getClass().getGenericSuperclass();
+    Type genericSuperclass = stringRedisTemplate.getClass().getGenericSuperclass();
+    ParameterizedType parameterizedType = (ParameterizedType) genericSuperclass;
+    Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
+    for (Type actualType : actualTypeArguments) {
+      log.warn(actualType.getTypeName());
+    }
   }
   
 }
