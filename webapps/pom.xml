@@ -19,7 +19,10 @@
 
     <modules>
         <module>order-app</module>
-        <module>insurance-app</module>
+        <module>item-app</module>
+        <module>user-app</module>
+        <module>system-app</module>
+        <module>pay-app</module>
     </modules>
 
 </project>

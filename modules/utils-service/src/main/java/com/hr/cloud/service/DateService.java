@@ -329,48 +329,6 @@ public class DateService {
   }
   
   /**
-   * 将传入时间format成半点时间
-   *
-   * @param date
-   * @return date
-   */
-  public static Date formatToHalfHour(Date date) {
-    int minute = date.getMinutes();
-    
-    if (minute >= 0 && minute <= 29) {
-      date.setMinutes(0);
-    } else {
-      date.setMinutes(30);
-    }
-    
-    date.setSeconds(0);
-    return date;
-  }
-  
-  
-  /**
-   * 将传入时间format成半点时间(+ 30)
-   *
-   * @param date
-   * @return date
-   */
-  public static Date formatToAfterHalfHour(Date date) {
-    int minute = date.getMinutes();
-    
-    if (minute >= 0 && minute <= 29) {
-      date.setMinutes(30);
-    } else {
-      date.setMinutes(0);
-      long time = date.getTime();
-      //+ 1 h
-      date = new Date(time + 60L * 60L * 1000L);
-    }
-    
-    date.setSeconds(0);
-    return date;
-  }
-  
-  /**
    * 检查传入时间是否为今天
    *
    * @param date 传入时间

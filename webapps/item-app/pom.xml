@@ -9,11 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>insurance-app</artifactId>
+    <artifactId>item-app</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>insurance-app:8082</name>
+    <name>item-app:8082</name>
     <description>insurance part of hr cloud</description>
 
 </project>
