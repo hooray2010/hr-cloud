@@ -1,6 +1,6 @@
 package com.hr.cloud.controller;
 
-import com.hr.cloud.OrderApplication;
+import com.hr.cloud.OrderApp;
 import com.hr.cloud.model.Apple;
 import com.hr.cloud.model.Fruit;
 import com.hr.cloud.model.TestModel;
@@ -25,7 +25,7 @@ import java.util.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@Import(OrderApplication.class)
+@Import(OrderApp.class)
 @Slf4j
 public class TestControllerTest {
   

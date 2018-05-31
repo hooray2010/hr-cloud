@@ -10,10 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //@EnableAutoConfiguration(exclude = DataSourceAutoConfiguration.class)
 //@MapperScan("com.hr.cloud.mapper")
 //@EnableAspectJAutoProxy(proxyTargetClass = false)
-public class OrderApplication {
+public class ItemApp {
   
   public static void main(String[] args) {
-    SpringApplication.run(OrderApplication.class);
+    SpringApplication.run(ItemApp.class);
   }
   
 }

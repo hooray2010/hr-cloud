@@ -1,6 +1,6 @@
 package com.hr.cloud.mapper;
 
-import com.hr.cloud.OrderApplication;
+import com.hr.cloud.OrderApp;
 import com.hr.cloud.entity.InsuranceEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +23,7 @@ import java.util.Map;
  */
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@Import(OrderApplication.class)
+@Import(OrderApp.class)
 public class InsuranceMapperTest {
   
   @Autowired

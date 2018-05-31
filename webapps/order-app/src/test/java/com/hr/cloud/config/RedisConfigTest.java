@@ -1,6 +1,6 @@
 package com.hr.cloud.config;
 
-import com.hr.cloud.OrderApplication;
+import com.hr.cloud.OrderApp;
 import com.hr.cloud.entity.OrderEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@Import(OrderApplication.class)
+@Import(OrderApp.class)
 @Slf4j
 public class RedisConfigTest {
   

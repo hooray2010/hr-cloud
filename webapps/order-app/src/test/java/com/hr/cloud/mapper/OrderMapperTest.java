@@ -1,6 +1,6 @@
 package com.hr.cloud.mapper;
 
-import com.hr.cloud.OrderApplication;
+import com.hr.cloud.OrderApp;
 import com.hr.cloud.entity.OrderEntity;
 import com.hr.cloud.util.StringService;
 import org.apache.ibatis.session.Configuration;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@Import(OrderApplication.class)
+@Import(OrderApp.class)
 public class OrderMapperTest {
   
   @Autowired

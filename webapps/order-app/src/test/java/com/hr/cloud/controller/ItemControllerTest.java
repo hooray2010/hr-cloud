@@ -1,6 +1,6 @@
 package com.hr.cloud.controller;
 
-import com.hr.cloud.OrderApplication;
+import com.hr.cloud.OrderApp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@Import(OrderApplication.class)
+@Import(OrderApp.class)
 public class ItemControllerTest {
   
   @Test
