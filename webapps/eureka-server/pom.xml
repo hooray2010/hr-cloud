@@ -11,4 +11,7 @@
 
     <artifactId>eureka-server</artifactId>
 
+    <name>eureka-server:10000</name>
+    <description>eureka-server of hr cloud</description>
+
 </project>
