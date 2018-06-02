@@ -15,6 +15,11 @@
     <description>eureka-server of hr cloud</description>
 
     <dependencies>
+        <!-- 导入Eureka服务的依赖 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka-server</artifactId>
+        </dependency>
         <!-- spring security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

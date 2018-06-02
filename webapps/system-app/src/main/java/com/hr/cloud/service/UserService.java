@@ -1,5 +1,6 @@
 package com.hr.cloud.service;
 
+import com.hr.cloud.feign.UserFeign;
 import com.hr.cloud.model.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
@@ -17,12 +18,16 @@ public class UserService {
   @Autowired
   private RestTemplate restTemplate;
   
+  @Autowired
+  private UserFeign userFeign;
+  
   @HystrixCommand(fallbackMethod = "findUserByIdFallbackMethod") // 进行容错处理
   public User findUserById(long userId) {
-    String serviceId = "USER-APP";
-    User user = restTemplate.getForObject("http://" + serviceId + "/user/findOne/" + userId, User.class);
-    log.warn("login user = {}", user);
-    return user;
+//    String serviceId = "USER-APP";
+//    User user = restTemplate.getForObject("http://" + serviceId + "/user/findOne/" + userId, User.class);
+//    log.warn("login user = {}", user);
+//    return user;
+    return userFeign.findUserById(userId);
   }
   
   public User findUserByIdFallbackMethod(long userId) {
