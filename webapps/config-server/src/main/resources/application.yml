@@ -1,0 +1,24 @@
+server:
+  port: 10002 #服务端口
+
+spring:
+  application:
+    name: config-server #指定服务名
+  cloud:
+    config:
+      server:
+        git: #配置git仓库地址
+         uri: https://github.com/hooray2010/whatever.git
+#         username: hooray2010
+#         password: bsaayu303
+
+#logging
+logging.config: classpath:logback.xml
+
+#spring data source
+spring.datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://39.106.176.242:3306/cloud?useUnicode=true&characterEncoding=utf-8
+        username: alex
+        password: Root303!
