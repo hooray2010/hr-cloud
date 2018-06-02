@@ -9,8 +9,6 @@ spring:
       server:
         git: #配置git仓库地址
          uri: https://github.com/hooray2010/whatever.git
-#         username: hooray2010
-#         password: bsaayu303
 
 #logging
 logging.config: classpath:logback.xml
