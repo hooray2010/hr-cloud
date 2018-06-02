@@ -14,4 +14,12 @@
     <name>eureka-server:10000</name>
     <description>eureka-server of hr cloud</description>
 
+    <dependencies>
+        <!-- spring security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
