@@ -24,6 +24,7 @@
         <module>system-app</module>
         <module>pay-app</module>
         <module>eureka-server</module>
+        <module>zuul-server</module>
     </modules>
 
     <dependencies>
