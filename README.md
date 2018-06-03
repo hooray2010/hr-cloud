@@ -5,6 +5,8 @@
         * utils-service
      * ### webapps
         * eureka-server
+        * zuul-server
+        * config-server
         * item-app
         * order-app
         * pay-app
