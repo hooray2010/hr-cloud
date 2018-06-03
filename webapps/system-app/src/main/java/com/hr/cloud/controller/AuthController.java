@@ -1,5 +1,6 @@
 package com.hr.cloud.controller;
 
+import com.hr.cloud.config.JdbcConfigBean;
 import com.hr.cloud.model.User;
 import com.hr.cloud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,17 @@ public class AuthController {
   @Autowired
   private UserService userService;
   
+  @Autowired
+  private JdbcConfigBean jdbcConfigBean;
+  
   @GetMapping("login/{userId}")
   public User login(@PathVariable long userId) {
     return userService.findUserById(userId);
+  }
+  
+  @GetMapping(value = "getConfig")
+  public String getConfig() {
+    return this.jdbcConfigBean.toString();
   }
   
 }
