@@ -22,7 +22,6 @@ public class JenkinsController {
     private static final String PWD = "admin303";
     private static final String JOB_SUFFIX = "_cp";
 
-
     @GetMapping("{gitUrl}/{branch}")
     public void build(@PathVariable String gitUrl, @PathVariable String branch) throws URISyntaxException, IOException {
         JenkinsServer jenkins = new JenkinsServer(new URI(JENKINS_URL), USER_NAME, PWD);
@@ -34,7 +33,7 @@ public class JenkinsController {
             String jobXml = jenkins.getJobXml(jobName);
 
             // 修改构建脚本
-            String newJobName = jobName + "_";
+            String newJobName = jobName + JOB_SUFFIX;
             jenkins.createJob(newJobName, jobXml);
             // TODO: 2018/9/21 更新模板配置
             String newJobXml = "";
