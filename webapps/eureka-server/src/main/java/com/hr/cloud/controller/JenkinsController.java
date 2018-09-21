@@ -33,7 +33,7 @@ public class JenkinsController {
         // 判断jenkins是否running
         if (jenkins.isRunning()) {
 
-            // 获取jenkins构建脚本
+            // 获取jenkins任务
             String jobName = this.getJobName(buildReq.getGitUrl());
             log.warn(jobName);
             Map<String, Job> jobs = jenkins.getJobs();
@@ -41,7 +41,7 @@ public class JenkinsController {
             String jobXml = jenkins.getJobXml(jobName);
             log.warn("job xml = {}", jobXml);
 
-            // 修改构建脚本
+            // 修改构建任务
             String newJobName = jobName + JOB_SUFFIX;
             String newJobXml = jobXml + "";
 
@@ -59,6 +59,9 @@ public class JenkinsController {
             log.warn(jenkins.getJob(newJobName).getLastBuild().details().getConsoleOutputText());
             // 获取执行结果（是否成功）
             log.warn(JSON.toJSONString(jenkins.getJob(newJobName).getLastBuild().details().getResult()));
+
+            // 删除新建的任务
+            jenkins.deleteJob(newJobName);
         }
     }
 
