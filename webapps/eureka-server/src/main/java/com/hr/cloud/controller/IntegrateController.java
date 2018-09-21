@@ -2,6 +2,8 @@ package com.hr.cloud.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.hr.cloud.controller.request.JenkinsBuildReq;
+import com.hr.cloud.controller.request.SonarCallBackReq;
 import com.offbytwo.jenkins.JenkinsServer;
 import com.offbytwo.jenkins.model.Job;
 import lombok.extern.slf4j.Slf4j;
@@ -17,24 +19,31 @@ import java.util.Map;
 /**
  * @author hurui on 2018/9/21.
  */
-@RestController("jenkins")
+@RestController("integrate")
 @Slf4j
-public class JenkinsController {
+public class IntegrateController {
 
     private static final String JENKINS_URL = "http://39.106.176.242:8081";
     private static final String USER_NAME = "admin";
     private static final String PWD = "admin303";
     private static final String JOB_SUFFIX = "_cp";
 
-    @PostMapping("build")
-    public void build(@RequestBody BuildReq buildReq) throws URISyntaxException, IOException {
+    /**
+     * 启动jenkins任务
+     *
+     * @param jenkinsBuildReq
+     * @throws URISyntaxException
+     * @throws IOException
+     */
+    @PostMapping("jenkins/build")
+    public void jenkinsBuild(@RequestBody JenkinsBuildReq jenkinsBuildReq) throws URISyntaxException, IOException {
         JenkinsServer jenkins = new JenkinsServer(new URI(JENKINS_URL), USER_NAME, PWD);
 
         // 判断jenkins是否running
         if (jenkins.isRunning()) {
 
             // 获取jenkins任务
-            String jobName = this.getJobName(buildReq.getGitUrl());
+            String jobName = this.getJobName(jenkinsBuildReq.getGitUrl());
             log.warn(jobName);
             Map<String, Job> jobs = jenkins.getJobs();
             log.warn("jobs = {}", JSONObject.toJSONString(jobs));
@@ -67,6 +76,16 @@ public class JenkinsController {
 
     private String getJobName(String gitUrl) {
         return gitUrl.substring(gitUrl.lastIndexOf("/") + 1, gitUrl.length()).replace(".git", "");
+    }
+
+    /**
+     * sonar回调
+     *
+     * @param sonarCallBackReq
+     */
+    @PostMapping("sonar/callback")
+    public void sonarCallBack(@RequestBody SonarCallBackReq sonarCallBackReq) {
+
     }
 
 }
